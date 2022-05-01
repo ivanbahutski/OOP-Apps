@@ -1,3 +1,6 @@
+from calendar import monthrange
+
+
 class Bill:
     """
     Object that contains data about a bill,
@@ -21,7 +24,8 @@ class Flatmates:
 
     def pays(self, bill):
         if type(self.day_in_house) == int:
-            one_day = bill.amount / 30
+            num_days = monthrange(bill.period[0], bill.period[1])[1]
+            one_day = bill.amount / num_days
             pays = self.day_in_house * one_day
             return pays
 
@@ -44,9 +48,9 @@ class PdfReport:
         pass
 
 
-the_bill = Bill(amount=120, period="March 2021")
-fl = Flatmates(name=["John", "Marry"], days_in_house=[20, 25])
-# fl = Flatmates(name="Ivan", days_in_house=20)
+the_bill = Bill(amount=120, period=(2019, 2))
+# fl = Flatmates(name=["John", "Marry"], days_in_house=[20, 25])
+fl = Flatmates(name="Ivan", days_in_house=20)
 
 print(fl.pays(bill=the_bill))
 # print(marry.pays(bill=the_bill))
