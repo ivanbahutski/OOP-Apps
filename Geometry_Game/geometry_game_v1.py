@@ -19,6 +19,15 @@ class Point:
         return ((self.x - point.x) ** 2 + (self.y - point.y) ** 2) ** 0.5
 
 
+class GuiPoint(Point):
+
+    def draw_point(self, canvas, size=10, color='red'):
+        canvas.penup()
+        canvas.goto(self.x, self.y)
+        canvas.pendown()
+        canvas.dot(size, color)
+
+
 class Rectangle:
     def __init__(self, point1, point2):
         self.point1 = point1
@@ -45,44 +54,38 @@ class GuiRectangle(Rectangle):
         canvas.left(90)
         canvas.forward(self.point2.y - self.point1.y)
 
-        turtle.done()
 
-
-gui_rectangle = GuiRectangle(
+rectangle = GuiRectangle(
     Point(randint(0, 400), randint(0, 400)),
     Point(randint(10, 400), randint(10, 400))
 )
 
+print(
+    "Rectangle coordinates is: ",
+    rectangle.point1.x, ",",
+    rectangle.point1.y, "and",
+    rectangle.point2.x, ",",
+    rectangle.point2.y
+
+)
+user_point = GuiPoint(
+    float(input("Enter 'x' value: ")),
+    float(input("Enter 'y' value: "))
+)
+
+user_area = float(input("Guess rectangle area: "))
+
+print(
+    "Your point was inside rectangle: ",
+    user_point.falls_in_rectangle(rectangle)
+)
+
+print(
+
+    "Your area was off by: ",
+    rectangle.area() - user_area
+)
 myturtle = turtle.Turtle()
-
-gui_rectangle.draw(canvas=myturtle)
-
-
-# rectangle = Rectangle(
-#     Point(randint(0, 400), randint(0, 400)),
-#     Point(randint(10, 400), randint(10, 400))
-# )
-# print(
-#     "Rectangle coordinates is: ",
-#     rectangle.point1.x, ",",
-#     rectangle.point1.y, "and",
-#     rectangle.point2.x, ",",
-#     rectangle.point2.y
-#
-# )
-# user_point = Point(
-#     float(input("Enter 'x' value: ")),
-#     float(input("Enter 'y' value: "))
-# )
-#
-# user_area = float(input("Guess rectangle area: "))
-#
-# print(
-#     "Your point was inside rectangle: ",
-#     user_point.falls_in_rectangle(rectangle)
-# )
-#
-# print(
-#     "Your area was off by: ",
-#     rectangle.area() - user_area
-# )
+rectangle.draw(canvas=myturtle)
+user_point.draw_point(canvas=myturtle)
+turtle.done()
