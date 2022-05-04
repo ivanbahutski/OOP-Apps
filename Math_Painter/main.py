@@ -1,31 +1,39 @@
-class Square:
-    def __init__(self, x, y, side, color):
-        self.x = x
-        self.y = y
-        self.side = side
-        self.color = color
+from Math_Painter.canvas import Canvas
+from Math_Painter.shapes import Square, Rectangle
 
-    def draw(self, canvas):
-        pass
+canv_w = input("Enter canvas width: ")
+canv_h = input("Enter canvas height: ")
 
+colors = {"white": (255, 255, 255), "black": (0, 0, 0)}
+canv_c = input("Enter canvas color (white or black): ")
 
-class Rectangle:
-    def __init__(self, x, y, width, height, color):
-        self.x = x
-        self.y = y
-        self.width = width
-        self.height = height
-        self.color = color
+canv = Canvas(canv_w, canv_h, canv_c)
 
-    def draw(self, canvas):
-        pass
+while True:
+    shape_type = input("What would you like to draw? Enter quit to quit. ")
+    if shape_type.lower() == 'square':
+        sqr_x = int(input("Enter x of the square: "))
+        sqr_y = int(input("Enter y of the square: "))
+        sqr_side = int(input("Enter the side length of the square: "))
+        red = int(input("How much red should the square have: "))
+        green = int(input("How much green: "))
+        blue = int(input("How much blue: "))
 
+        square = Square(sqr_x, sqr_y, sqr_side, (red, green, blue))
+        square.draw(canv)
 
-class Canvas:
-    def __init__(self, width, height, color):
-        self.width = width
-        self.height = height
-        self.color = color
+    if shape_type.lower() == 'rectangle':
+        sqr_x = int(input("Enter x of the rectangle: "))
+        sqr_y = int(input("Enter y of the rectangle: "))
+        sqr_wdth = int(input("Enter the width length of the rectangle: "))
+        sqr_hght = int(input("Enter the height length of the rectangle: "))
+        red = int(input("How much red should the rectangle have: "))
+        green = int(input("How much green: "))
+        blue = int(input("How much blue: "))
 
-    def make(self, imagepath):
-        pass
+        rect = Rectangle(sqr_x, sqr_y, sqr_wdth, sqr_hght, (red, green, blue))
+        rect.draw(canv)
+    if shape_type.lower() == 'quit':
+        break
+
+canv.make('canvas.png')
