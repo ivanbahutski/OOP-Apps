@@ -1,13 +1,13 @@
 from Math_Painter.canvas import Canvas
 from Math_Painter.shapes import Square, Rectangle
 
-canv_w = input("Enter canvas width: ")
-canv_h = input("Enter canvas height: ")
+canv_w = int(input("Enter canvas width: "))
+canv_h = int(input("Enter canvas height: "))
 
 colors = {"white": (255, 255, 255), "black": (0, 0, 0)}
 canv_c = input("Enter canvas color (white or black): ")
 
-canv = Canvas(canv_w, canv_h, canv_c)
+canv = Canvas(canv_w, canv_h, colors[canv_c])
 
 while True:
     shape_type = input("What would you like to draw? Enter quit to quit. ")
