@@ -1,2 +1,4 @@
 fpdf==1.7.2
 filestack-python==3.5.0
+Flask==2.1.2
+WTforms==3.0.1
