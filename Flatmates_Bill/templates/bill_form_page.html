@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>The Bill Form</h1>
+    <p>Fill in the form and click the button to get the results</p>
+    <form action="/results" method="post">
+        {{bill_form.amount.label}} {{bill_form.amount}}
+        <br>
+        {{bill_form.period.label}} {{bill_form.period}}
+        <hr>
+        <p>First Flatmate</p>
+        {{bill_form.name1.label}}  {{bill_form.name1}}
+        <br>
+        {{bill_form.days_in_house1.label}}  {{bill_form.days_in_house1}}
+        <hr>
+        <p>Second Flatmate</p>
+        {{bill_form.name2.label}}  {{bill_form.name2}}
+        <br>
+        {{bill_form.days_in_house2.label}}  {{bill_form.days_in_house2}}
+        <br>
+        {{bill_form.button}}
+
+    </form>
+</body>
+</html>
